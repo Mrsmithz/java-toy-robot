@@ -16,6 +16,7 @@ public class Robot implements Commandable {
     private static final Integer RIGHT_TURN_DEGREES = 90;
     private static final Integer STEP = 1;
     private static final String OUT_OF_TABLE_WARNING_MSG = "I'll be out of the table";
+    private static final String ROBOT_IS_MOVING_MSG = "Robot is moving.";
     private Integer x;
     private Integer y;
     private Direction direction;
@@ -38,6 +39,11 @@ public class Robot implements Commandable {
             return;
         }
 
+        if (isOutOfTheTable()) {
+            System.out.println("Robot is out of the table");
+            return;
+        }
+
         switch (direction) {
             case NORTH, SOUTH -> moveY(direction);
             case EAST, WEST -> moveX(direction);
@@ -50,6 +56,7 @@ public class Robot implements Commandable {
             case EAST -> {
                 if (this.x >= MIN_X && this.x < MAX_X) {
                     this.x += STEP;
+                    System.out.println(ROBOT_IS_MOVING_MSG);
                 } else {
                     System.out.println(OUT_OF_TABLE_WARNING_MSG);
                 }
@@ -57,6 +64,7 @@ public class Robot implements Commandable {
             case WEST -> {
                 if (this.x > MIN_X && this.x <= MAX_X) {
                     this.x -= STEP;
+                    System.out.println(ROBOT_IS_MOVING_MSG);
                 } else {
                     System.out.println(OUT_OF_TABLE_WARNING_MSG);
                 }
@@ -70,6 +78,7 @@ public class Robot implements Commandable {
             case NORTH -> {
                 if (this.y >= MIN_Y && this.y < MAX_Y) {
                     this.y += STEP;
+                    System.out.println(ROBOT_IS_MOVING_MSG);
                 } else {
                     System.out.println(OUT_OF_TABLE_WARNING_MSG);
                 }
@@ -77,6 +86,7 @@ public class Robot implements Commandable {
             case SOUTH -> {
                 if (this.y > MIN_Y && this.y <= MAX_Y) {
                     this.y -= STEP;
+                    System.out.println(ROBOT_IS_MOVING_MSG);
                 } else {
                     System.out.println(OUT_OF_TABLE_WARNING_MSG);
                 }
@@ -103,6 +113,7 @@ public class Robot implements Commandable {
         try {
             if (isValidRobotPlace(input)) {
                 this.place(input);
+                return;
             }
 
             Command command = Command.parseCommand(input);
