@@ -2,6 +2,6 @@
 
 ## How to run
 
-### using intellij IDE to run or build using `jar` javac
+### using intellij IDE to run or build `jar` using `javac`
 
 ### this project has two input method via `CLI` and `.txt` file

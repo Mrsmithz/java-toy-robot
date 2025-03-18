@@ -36,6 +36,7 @@ public class RobotServiceImpl implements RobotService {
 
     private void inputWithCommandLind() {
         do {
+            System.out.println("Valid Command is MOVE, REPORT, LEFT, RIGHT and PLACE X,Y,F");
             String input = scanner.nextLine();
 
             if (input.equals("DONE")) {
